@@ -2,6 +2,7 @@
 
 #include "Tank.h"
 #include "Runtime/CoreUObject/Public/UObject/UObjectGlobals.h"
+#include "TankAimingComponent.h"
 
 
 // Sets default values
