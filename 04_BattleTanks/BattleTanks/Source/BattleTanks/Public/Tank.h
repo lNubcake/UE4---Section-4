@@ -25,6 +25,8 @@ protected:
 		void SetBarrelReference(UTankBarrel* BarrelToSet);
 	UFUNCTION(BlueprintCallable, Category = Setup)
 		void SetTurretReference(UTankTurret* TurretToSet);
+	UFUNCTION(BlueprintCallable, Category = Combat)
+		void Fire();
 
 	UPROPERTY(EditAnywhere, Category = Firing)
 		float LaunchSpeed = 20000; // TODO find sensible default
