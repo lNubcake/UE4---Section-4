@@ -8,6 +8,7 @@
 
 class UTankBarrel;
 class UTankAimingComponent;
+class AProjectile;
 
 UCLASS()
 class BATTLETANKS_API ATank : public APawn
@@ -29,7 +30,9 @@ protected:
 		void Fire();
 
 	UPROPERTY(EditAnywhere, Category = Firing)
-		float LaunchSpeed = 20000; // TODO find sensible default
+		float LaunchSpeed = 4000; // TODO find sensible default
+	UPROPERTY(EditAnywhere, Category = Setup)
+		TSubclassOf<AProjectile> ProjectileBlueprint;
 
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -40,5 +43,8 @@ public:
 
 public:
 	void AimAt(FVector HitLocation);
+
+private:
+	UTankBarrel* Barrel = nullptr;
 	
 };
