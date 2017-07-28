@@ -50,7 +50,6 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		ESuggestProjVelocityTraceOption::DoNotTrace
 	);
 	// Calculate the OutLaunchVelocity
-	auto Time = GetWorld()->GetTimeSeconds();
 
 	if (bHaveAimSolution)
 	{
