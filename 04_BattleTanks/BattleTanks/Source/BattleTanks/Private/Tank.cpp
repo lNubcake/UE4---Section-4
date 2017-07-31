@@ -3,6 +3,7 @@
 #include "Tank.h"
 #include "Runtime/CoreUObject/Public/UObject/UObjectGlobals.h"
 #include "TankAimingComponent.h"
+#include "TankMovementComponent.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
 
