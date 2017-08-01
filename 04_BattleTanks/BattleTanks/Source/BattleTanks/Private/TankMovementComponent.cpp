@@ -15,7 +15,6 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(Throw);
-	// TODO prevent double speed doue to dual control use
 }
 
 void UTankMovementComponent::IntendTurnRight(float Throw)
@@ -24,7 +23,19 @@ void UTankMovementComponent::IntendTurnRight(float Throw)
 
 	LeftTrack->SetThrottle(Throw);
 	RightTrack->SetThrottle(-Throw);
-	// TODO prevent double speed doue to dual control use
 }
 
+void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool bForceMaxSpeed)
+{
+	// No need to call super
+
+	auto TankForward = GetOwner()->GetActorForwardVector().GetSafeNormal();
+	auto AIForwardIntention = MoveVelocity.GetSafeNormal();
+
+	auto ForwardThrow = FVector::DotProduct(AIForwardIntention, TankForward);
+	IntendMoveForward(ForwardThrow);
+
+	auto RightThrow = FVector::CrossProduct(AIForwardIntention, TankForward).Z;
+	IntendTurnRight(RightThrow);
+}
 
